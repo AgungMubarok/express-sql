@@ -10,9 +10,9 @@ const mysql = require('mysql');
 // gunakan data mysql mu
 const connection = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "password",
-    database: "impactbyte"
+    user: "agungmubarok",
+    password: "BoedakCOYE45*",
+    database: "netpliks"
 })
 
 

@@ -2,8 +2,8 @@ const connection = require('../config/database');
 const bcrypt = require('bcrypt')
 
 module.exports = {
-    getAllUser : (req, res) => {
-        const myQuery = 'SELECT * from users'
+    getAllMovie : (req, res) => {
+        const myQuery = 'SELECT * from movies'
         connection.query(myQuery, (error, result, field) => {
             if(error){
                 res.send({
@@ -19,9 +19,9 @@ module.exports = {
             }
         })
     },
-    getOneUser : (req, res) => {
+    getOneMovie : (req, res) => {
         const {id} = req.params
-        const myQuery = `SELECT * FROM users WHERE id_user=${id}`
+        const myQuery = `SELECT * FROM movies WHERE id_movies=${id}`
         connection.query(myQuery, (error, result) => {
             if(error){
                 res.send({
@@ -37,15 +37,9 @@ module.exports = {
             }
         })
     }, 
-    create : (req, res) => {
-        const {fullname, username, email, password, address} = req.body
-        bcrypt.hash(password,8, (error, hashedPassword) => {
-            if(error) {
-                res.send({
-                    message: "password invalid"
-                })
-            } else {
-                const myQuery = `INSERT INTO users(fullname, username, email, password, address) VALUES("${fullname}", "${username}", "${email}", "${hashedPassword}", "${address}")`;
+    createMovie : (req, res) => {
+        const {title, year, genre, description, url_trailer} = req.body
+        const myQuery = `INSERT INTO users(title, year, genre, description, url_trailer) VALUES("${title}", "${year}", "${genre}", "${description}", "${url_trailer}")`;
                 connection.query(myQuery, (error, result) => {
                     if(error){
                         console.log(error)
@@ -61,8 +55,5 @@ module.exports = {
                         })
                     }
                 })
-
-            }
-        })
     }
 }

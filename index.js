@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const connection = require('./config/database')
 
-const userRouter = require('./routes/users')
+const userRouter = require('./routes/index')
 const app = express()
 
 // parse application/x-www-form-urlencoded
